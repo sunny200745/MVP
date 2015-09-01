@@ -10,23 +10,31 @@
  */
 angular
   .module('mvpApp', [
+    'ngAnimate',
+    'ngCookies',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch',
+    'chieffancypants.loadingBar',
+    'ui.router',
+    'ui.bootstrap'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+
+  .config(["$stateProvider","$urlRouterProvider","cfpLoadingBarProvider",function ($stateProvider,$urlRouterProvider,cfpLoadingBarProvider) {
+    $stateProvider
+      .state('login', {
+        url: "/login",
+        data: {title: "Login"},
+        views: { 
+          'header': { templateUrl: 'views/common/header.html', controller: 'HeaderCtrl' },
+          'main': { templateUrl: 'views/login.html', controller: 'LoginCtrl' },
+          'footer': { templateUrl: 'views/common/footer.html', controller: 'FooterCtrl' }
+        }
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-      
+      $urlRouterProvider.otherwise('/login');
+      cfpLoadingBarProvider.includeSpinner = false;
+
+  }]).run(function ($state,$rootScope) {
+    $rootScope.$state = $state;
   });
