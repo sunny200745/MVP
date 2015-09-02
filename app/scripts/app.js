@@ -41,6 +41,15 @@ angular
           'footer': { templateUrl: 'views/common/footer.html', controller: 'FooterCtrl' }
         }
       })
+      .state('profileDetail', {
+        url: "/profile/:profileID",
+        data: {title: "Profile"},
+        views: { 
+          'header': { templateUrl: 'views/common/header.html', controller: 'HeaderCtrl' },
+          'main': { templateUrl: 'views/userprofile.html', controller: 'UserprofileCtrl' },
+          'footer': { templateUrl: 'views/common/footer.html', controller: 'HeaderCtrl' }
+        }
+      })
       $urlRouterProvider.otherwise('/login');
       cfpLoadingBarProvider.includeSpinner = false;
       var login={'email':'sunny.200745@gmail.com','password':'1234'}
