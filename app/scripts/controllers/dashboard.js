@@ -33,7 +33,9 @@ angular.module('mvpApp')
    			}
    			$location.path( "/profile/"+empId );
    		}
-
-   		
    	};
+
+      $scope.notImplemented = function(){
+         alert("Not Implemented yet. Please Do it yourself....!!!!!")
+      };
   }]);
