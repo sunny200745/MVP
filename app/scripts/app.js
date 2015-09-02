@@ -32,9 +32,20 @@ angular
           'footer': { templateUrl: 'views/common/footer.html', controller: 'FooterCtrl' }
         }
       })
+      .state('dashboard', {
+        url: "/dashboard",
+        data: {title: "Dashboard"},
+        views: { 
+          'header': { templateUrl: 'views/common/header.html', controller: 'HeaderCtrl' },
+          'main': { templateUrl: 'views/dashboard.html', controller: 'DashboardCtrl' },
+          'footer': { templateUrl: 'views/common/footer.html', controller: 'FooterCtrl' }
+        }
+      })
       $urlRouterProvider.otherwise('/login');
       cfpLoadingBarProvider.includeSpinner = false;
-
+      var login={'email':'sunny.200745@gmail.com','password':'1234'}
+      localStorage.setItem('loginObject',JSON.stringify(login));
+    
   }]).run(function ($state,$rootScope) {
     $rootScope.$state = $state;
   });
