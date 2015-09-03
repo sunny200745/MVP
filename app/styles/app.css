@@ -338,3 +338,8 @@ span.glyphicon-log-in{
   width: 32px;
   height: 32px;
 }
+#canvas{
+  border-bottom: 1px solid rgba(0,0,0,0.3); 
+  background-color: #FFF;
+  box-shadow: 0 9px 20px 18px rgba(0,0,0,0.8);
+}
